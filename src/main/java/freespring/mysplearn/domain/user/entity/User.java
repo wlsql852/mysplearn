@@ -1,8 +1,9 @@
 package freespring.mysplearn.domain.user.entity;
 
-import freespring.mysplearn.domain.lecture.entity.Lesson;
+//import freespring.mysplearn.domain.lecture.entity.Lesson;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -16,32 +17,46 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length=50, nullable = false, unique = true)
-    private String Email;
-    @Column(length=50, nullable = false, unique = true)
-    private String Password;
+    private String email;
+    @Column(length=255, nullable = false)
+    private String password;
 
-    private Long Image;
-    @Column(length=50, unique = true)
-    private String Nickname;
+    private Long image;
+
+    @Column(length=50, nullable = false)
+    private String nickname;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private UserRole userRole;
 
     @Column(columnDefinition = "TEXT")
-    private String Introduction;
+    private String introduction;
 
     @CreatedDate
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime RegisteredAt;
+    private LocalDateTime registeredAt;
 
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime modifiedAt;
 
-    @OneToMany(mappedBy = "instructor")
-    private List<Lesson> lessons; // 강사가 진행하는 강의 목록
+//    @OneToMany(mappedBy = "instructor")
+//    private List<Lesson> lessons; // 강사가 진행하는 강의 목록
+
+    public User(String email, String password, UserRole role, String nickname) {
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+        this.userRole = UserRole.ROLE_USER;
+        this.registeredAt = LocalDateTime.now();
+    }
 }

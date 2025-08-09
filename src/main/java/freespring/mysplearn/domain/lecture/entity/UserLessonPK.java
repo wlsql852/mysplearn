@@ -12,17 +12,17 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-@Embeddable
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
-public class UserLessonPK implements Serializable {
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lesson_id", nullable   = false)
-    private Lesson lesson;
-}
+//@Embeddable
+//@Getter
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@EqualsAndHashCode
+//public class UserLessonPK implements Serializable {
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
+//
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "lesson_id", nullable   = false)
+//    private Lesson lesson;
+//}
