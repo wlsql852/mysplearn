@@ -1,9 +1,11 @@
 package freespring.mysplearn.domain.user.entity;
 
 //import freespring.mysplearn.domain.lecture.entity.Lesson;
+//import freespring.mysplearn.domain.credit.entity.Credit;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -48,6 +50,9 @@ public class User {
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime modifiedAt;
+//
+//    @OneToMany(mappedBy = "user", orphanRemoval = true)
+//    private List<Credit> credits;
 
 //    @OneToMany(mappedBy = "instructor")
 //    private List<Lesson> lessons; // 강사가 진행하는 강의 목록
@@ -56,7 +61,26 @@ public class User {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
-        this.userRole = UserRole.ROLE_USER;
+        this.userRole = role;
         this.registeredAt = LocalDateTime.now();
+    }
+
+    public void updateDetail(@NonNull String introduction, String image) {
+        this.introduction = introduction;
+        if (image != null && !image.isEmpty()) {
+            // 이미지가 null이 아니고 비어있지 않은 경우에만 업데이트
+            this.image = Long.parseLong(image);
+        }
+    }
+
+    public void updateImage(String image) {
+        if (image != null && !image.isEmpty()) {
+            // 이미지가 null이 아니고 비어있지 않은 경우에만 업데이트
+            this.image = Long.parseLong(image);
+        }
+    }
+
+    public void updateIntro(@NonNull String introduction) {
+        this.introduction = introduction;
     }
 }

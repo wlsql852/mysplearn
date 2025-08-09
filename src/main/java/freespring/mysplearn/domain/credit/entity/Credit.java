@@ -1,5 +1,6 @@
 package freespring.mysplearn.domain.credit.entity;
 
+//import freespring.mysplearn.domain.user.entity.User;
 //import jakarta.persistence.*;
 //import lombok.Getter;
 //import lombok.Setter;
@@ -31,5 +32,8 @@ package freespring.mysplearn.domain.credit.entity;
 //    @Column(nullable = false)
 //    private Boolean Main;
 //
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
 //
 //}
