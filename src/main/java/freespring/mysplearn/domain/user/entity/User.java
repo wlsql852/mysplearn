@@ -2,6 +2,7 @@ package freespring.mysplearn.domain.user.entity;
 
 //import freespring.mysplearn.domain.lecture.entity.Lesson;
 //import freespring.mysplearn.domain.credit.entity.Credit;
+import freespring.mysplearn.domain.credit.entity.Credit;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,8 +52,8 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime modifiedAt;
 //
-//    @OneToMany(mappedBy = "user", orphanRemoval = true)
-//    private List<Credit> credits;
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    private List<Credit> credits;
 
 //    @OneToMany(mappedBy = "instructor")
 //    private List<Lesson> lessons; // 강사가 진행하는 강의 목록
