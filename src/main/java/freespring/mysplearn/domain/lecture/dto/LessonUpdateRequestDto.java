@@ -5,14 +5,12 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 
 @Getter
-public class LessonRequestDto {
-    @NotBlank
+public class LessonUpdateRequestDto {
     private String title;
 
-    @NotBlank
     private String description;
 
-    private Long thumbnail;
+    private Long Thumbnail;
 
-    private Integer price;
+    private Integer Price;
 }
